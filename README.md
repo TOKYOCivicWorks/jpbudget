@@ -31,7 +31,7 @@ Then navigate your browser to http://(*LOCAL_HOST_IP*):8000, typing *testuser* &
 
 ## How to Contribute
 
-[How to contribute](https://raw.github.com/TOKYOCivicWorks/jpbudget/master/HOW_TO_CONTRIBUTE.md)
+[How to contribute](https://github.com/TOKYOCivicWorks/jpbudget/blob/master/HOW_TO_CONTRIBUTE.md)
 
 ## License
 
