@@ -1,0 +1,19 @@
+ul.nav.pull-right
+  - var text = "%E5%9B%BD%E3%81%AE%E4%BA%88%E7%AE%97%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96%E3%82%B5%E3%82%A4%E3%83%88";
+  - var url = "http%3A%2F%2Fbudget.civic-works.tokyo";
+  li.sns-share-list-item
+    a(href="http://www.facebook.com/sharer.php?u=#{url}&amp;t=#{text}",
+      target="_blank")
+      i.sns-share-icon.fab.fa-facebook-f(title="Facebookで共有")
+  li.sns-share-list-item
+    a(href="https://twitter.com/intent/tweet?text=#{text}&url=#{url}&via=TOKYOCivicWorks",
+      target="_blank")
+      i.sns-share-icon.fab.fa-twitter(title="Twitterで共有")
+  li.sns-share-list-item
+    a(href="http://line.naver.jp/R/msg/text/?#{text}#{url}",
+      target="_blank")
+      i.sns-share-icon.fab.fa-line(title="LINEで共有")
+  li.sns-share-list-item
+    a(href="mailto:?subject=#{text}&body=#{url}",
+      target="_blank")
+      i.sns-share-icon.far.fa-envelope(title="メールで共有")
