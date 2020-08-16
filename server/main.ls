@@ -109,12 +109,14 @@
     locals[\web_host] = @config.web_host
     locals[\access_analysis_id] = @config.access_analysis_id
 
+    @get '/': ->
+        @render 'main.static.jade': locals
+
     @get '/:what': ->
-        #sendFile \index.html
-        @render 'index.static.jade', locals
+        @render 'main.static.jade': locals
 
     @get '/budget/:code': ->
         code = (@request.path.match /\/budget\/(\S+)/)[1]
         localsForOpenGraph = getOpenGraph code
         localsWithOpenGraph = Object.assign(locals, localsForOpenGraph)
-        @render 'index.static.jade', localsWithOpenGraph
+        @render 'main.static.jade': localsWithOpenGraph
