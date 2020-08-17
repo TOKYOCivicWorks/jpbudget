@@ -45,7 +45,8 @@ html(lang='en',prefix="og: http://ogp.me/ns#")
     script(src='/js/partials.js')
     script(src='/js/app.js', id="script_app", data-twitter-auth='#{locals.twitter_auth}',
            data-twitter-proxy-host='#{locals.twitter_proxy_host}',
-           data-twitter-proxy-port='#{locals.twitter_proxy_port}')
+           data-twitter-proxy-port='#{locals.twitter_proxy_port}',
+           data-log-level='#{locals.log_level}')
 
   body(ng-controller='AppCtrl',ng-cloak)
     #twitter-root
