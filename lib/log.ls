@@ -13,7 +13,10 @@ class LogClass
         @currentLogLevel = logLevels[level]
 
     getLogLevel: ->
-        @currentLogLevel
+        for i from 0 to Object.keys(logLevels).length - 1
+            if Object.values(logLevels)[i] == @currentLogLevel
+                return Object.keys(logLevels)[i]
+        @fatal '@currentLogLevel is invalid.'
 
     fatal: ->
         if @currentLogLevel >= logLevels['FATAL']

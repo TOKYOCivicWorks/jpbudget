@@ -108,6 +108,7 @@
     locals[\twitter_proxy_port] = @config.twitter_proxy_port
     locals[\web_host] = @config.web_host
     locals[\access_analysis_id] = @config.access_analysis_id
+    locals[\log_level] = log.getLogLevel()
 
     @get '/': ->
         @render 'main.static.jade': locals

@@ -16,7 +16,8 @@ angular.module \app, <[ partials ngResource app.controllers app.directives app.f
 
   $locationProvider.html5Mode true
 
-  log.setLogLevel 'INFO'
+  log.setLogLevel $('#script_app').attr('data-log-level')
+  log.debug 'setLogLevel:', $('#script_app').attr('data-log-level')
 
 .run <[$rootScope $state $stateParams $location]> ++ ($rootScope, $state, $stateParams, $location) ->
   $rootScope.$state = $state
