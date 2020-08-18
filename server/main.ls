@@ -98,10 +98,10 @@
 
     @include \auth
     @include \opengraph
-    @csv2012 = null
-    @loadCsv \app/assets/data/tw2012ap.csv, (hash) ~> 
-      @csv2012 = hash
-    getOpenGraph = (code) ~> @getOpenGraph @csv2012,code
+    @csvdata = null
+    @loadCsv \app/assets/data/jp2020.csv, (hash) ~> 
+      @csvdata = hash
+    getOpenGraph = (code) ~> @getOpenGraph @csvdata,code
     locals = {}
     locals[\twitter_auth] = encryptlib.encrypt @config.twitter_auth, @config.twitter_key
     locals[\twitter_proxy_host] = @config.twitter_proxy_host

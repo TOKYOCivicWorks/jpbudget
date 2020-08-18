@@ -2,7 +2,7 @@
   fs = require \fs
 
   CurrencyData = [
-    ["", "元", 1],
+    ["", "円", 1],
     ["份","營養午餐",25],
     ["份","營養午餐(回扣)",30],
     ["人的","年薪",308000],
@@ -34,7 +34,7 @@
       v = parseInt(v / 100000000) + "億"
     else v = parseInt(v / 1000000000000) + "兆"  if v >= 1000000000000
     v + (if full then c[0] + c[1] else "")
-  
+
   @loadCsv = (fn, cb) ->
     fs.readFile fn, \utf8, (err,data) ->
       hash = {}
@@ -53,8 +53,7 @@
       og_url: ""
       og_description: ""
     if !item then return ret
-    ret.og_title = " : 預算項目「" + item[3] + "」(屬於" + item[4] + " > " + item[5] + " > " + item[6] + ")"
+    ret.og_title = " : 予算項目「" + item[3] + "」(" + item[4] + " > " + item[5] + " > " + item[6] + ")"
     ret.og_url = "budget/"+code
-    ret.og_description = "【"+item[4]+" > " + item[5] + " > " + item[6] + " > " + item[3] + "】的年度預算為" + CurrencyConvert(item[2],0,true) + ", 相當於" + (CurrencyConvert item[2],parseInt(Math.random!*CurrencyData.length),true) + ", 也等於" + (CurrencyConvert item[2],parseInt(Math.random!*CurrencyData.length),true)
-    return ret;
-
+    ret.og_description = "【" + item[4] + " > " + item[5] + " > " + item[6] + " > " + item[3] + "】" + item[0] + "年度予算" + CurrencyConvert(item[2],0,true)
+    return ret
