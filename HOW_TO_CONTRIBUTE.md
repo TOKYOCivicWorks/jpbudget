@@ -34,8 +34,8 @@ Please make sure to attach some labels, e.g. enhancement, bug, to each issue.
   'Approve', and the author merges the change.
 * Please be careful to make your review comment not time-consuming for
   reviewees but necessary, effective and useful for the software.
-* The reasonable size of one change is usually 100 to 200 lines. 1000 lines is
-  too large, but it’s up to the case and the judgment of your reviewer
+* The reasonable maximum size of one change is usually 100 to 200 lines. 1000
+  lines is too large, but it’s up to the case and the judgment of your reviewer
   ([ref](https://google.github.io/eng-practices/review/developer/small-cls.html)).
 * To know more details, please refer to [Google's code review developer
   guide](https://google.github.io/eng-practices/review/).
