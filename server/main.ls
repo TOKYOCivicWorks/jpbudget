@@ -119,5 +119,5 @@
     @get '/budget/:code': ->
         code = (@request.path.match /\/budget\/(\S+)/)[1]
         localsForOpenGraph = getOpenGraph code
-        localsWithOpenGraph = Object.assign(locals, localsForOpenGraph)
+        localsWithOpenGraph = Object.assign(localsForOpenGraph, locals)
         @render 'main.static.jade': localsWithOpenGraph
