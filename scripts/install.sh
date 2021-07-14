@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SYSCTL_ADD="fs.inotify.max_user_watches=524288"
 THIS_DIR="$(cd $(dirname ${BASH_SOURCE}); pwd)"
 
 
@@ -11,6 +12,9 @@ main() {
     sudo n latest || exit
 
     sudo setcap cap_net_bind_service=+ep $(which node)
+    if ! grep "^${SYSCTL_ADD}$" /etc/sysctl.conf >/dev/null; then
+        echo "${SYSCTL_ADD}" | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+    fi
 
     cd ${THIS_DIR}/..
     npm i

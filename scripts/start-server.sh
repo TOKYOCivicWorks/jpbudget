@@ -1,8 +1,18 @@
 #!/bin/bash
 
 THIS_DIR="$(cd $(dirname ${BASH_SOURCE}); pwd)"
-SCREEN_LOG="/tmp/screen_server.$(date +%F-%H%M).$$.log"
 
+
+check_process() {
+    NEW_PATH="${PATH}:${THIS_DIR}/../node_modules/forever/bin"
+
+    env PATH="${NEW_PATH}" forever list | grep server/app.js >/dev/null \
+        || return 1
+    env PATH="${NEW_PATH}" forever list | grep server/app.js \
+        | grep -v STOPPED >/dev/null || return 1
+
+    return 0
+}
 
 usage() {
     echo "Usage: $(basename $0) [OPTION]"
@@ -48,9 +58,9 @@ main() {
         esac
     done
 
-    echo "[INFO] Save screen log ${SCREEN_LOG}"
-    screen -d -m -S server script -f -c "${prefix} make run" ${SCREEN_LOG}
+    echo "[INFO] Save forever log /tmp/forever_server.log"
+    ${prefix} make run
     sleep 0.5
-    screen -ls server
+    check_process
 }
 main "$@"

@@ -1,8 +1,18 @@
 #!/bin/bash
 
 THIS_DIR="$(cd $(dirname ${BASH_SOURCE}); pwd)"
-SCREEN_LOG="/tmp/screen_twitter-proxy.$(date +%F-%H%M).$$.log"
 
+
+check_process() {
+    NEW_PATH="${PATH}:${THIS_DIR}/../node_modules/forever/bin"
+
+    env PATH="${NEW_PATH}" forever list | grep twitter_proxy/app.js >/dev/null \
+        || return 1
+    env PATH="${NEW_PATH}" forever list | grep twitter_proxy/app.js \
+        | grep -v STOPPED >/dev/null || return 1
+
+    return 0
+}
 
 usage() {
     echo "Usage: $(basename $0) [OPTION]"
@@ -49,9 +59,9 @@ main() {
         esac
     done
 
-    echo "[INFO] Save screen log ${SCREEN_LOG}"
-    screen -d -m -S twitter-proxy script -f -c "${prefix} make run-twitter-proxy" ${SCREEN_LOG}
+    echo "[INFO] Save forever log /tmp/forever_twitter-proxy.log"
+    ${prefix} make run-twitter-proxy
     sleep 0.5
-    screen -ls twitter-proxy
+    check_process
 }
 main "$@"

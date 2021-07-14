@@ -18,6 +18,7 @@ dependencies:
   'bcrypt': '*'
   'cookie-sessions': 'git://github.com/clkao/cookie-sessions.git'
   'crypto-js': '^4.0.0'
+  'forever': '^4.0.1',
   'jade': '0.27.x'
   'livescript': '^1.6.0'
   'mongoose': '3.2.x'

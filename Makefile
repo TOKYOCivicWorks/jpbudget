@@ -16,9 +16,9 @@ client ::
 	env PATH="$$PATH:./node_modules/brunch/bin" brunch b
 
 run :: server
-	node server/app.js
+	env PATH="$$PATH:./node_modules/forever/bin" forever start -w -p /tmp -l forever_server.log -a server/app.js
 
 run-twitter-proxy :: twitter-proxy
-	node twitter_proxy/app.js
+	env PATH="$$PATH:./node_modules/forever/bin" forever start -w -p /tmp -l forever_twitter-proxy.log -a twitter_proxy/app.js
 
 .SUFFIXES: .jade .html .ls .js
