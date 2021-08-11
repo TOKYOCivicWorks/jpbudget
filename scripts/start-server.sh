@@ -60,7 +60,7 @@ main() {
 
     echo "[INFO] Save forever log /tmp/forever_server.log"
     ${prefix} make run
-    sleep 0.5
+    sleep 5
     check_process
 }
 main "$@"
